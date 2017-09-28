@@ -1,8 +1,13 @@
 #include <iostream>
 
+#include <fstream>
+
 using namespace std;
 
 #define MAX 10
+
+ifstream in("gengraf.in");
+ofstream out("gengraf.out");
 
 struct graph{
     bool g[MAX][MAX];
@@ -13,9 +18,9 @@ void ki(graph g){
     int i,j;
     for(i=0;i<g.n;i++){
         for(j=0;j<g.n;j++){
-            cout<<g.g[i][j]<<' ';
+            out<<g.g[i][j]<<' ';
         }
-        cout<<endl;
+        out<<endl;
     }
 }
 
@@ -24,7 +29,7 @@ void gen(int n){
     int a=1<<((n*(n-1))/2);//3:3;4:6;5:10
     ///iranyitott
     //a=1<<(n*(n-1))
-    cout<<a<<endl;
+    out<<a<<endl;
     int i,j,k,l;
     graph g;
     g.n=n;
@@ -38,14 +43,14 @@ void gen(int n){
             }
         }
         ki(g);
-        cout<<endl;
+        out<<endl;
     }
 }
 
 int main()
 {
     int n;
-    cin>>n;
+    in>>n;
     gen(n);
     return 0;
 }
